@@ -1,10 +1,9 @@
-import app from '../src/app.js'
-import dotenv from 'dotenv'
+import { startServer } from './server.js'
+import { initMongoDB } from './db/initMongoDB.js'
 
-dotenv.config()
+const bootstrap = async () => {
+  await initMongoDB()
+  startServer()
+}
 
-const PORT = process.env.PORT || 3001
-
-app.listen(PORT, () => {
-  console.log(`Server is running on: ${PORT}`)
-})
+bootstrap()
